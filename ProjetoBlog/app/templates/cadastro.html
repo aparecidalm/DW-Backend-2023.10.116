@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<section class="container">
+  <h2>Cadastre-se</h2>
+  <p>Seja parte da nossa comunidade no Blog de Desenvolvimento Web. Cadastre-se para ter acesso a conteúdo exclusivo, interagir com outros desenvolvedores e receber atualizações.</p>
+  
+  {% set messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+      {{ message }} 
+    </div> 
+    <!-- <div class="alert alert-danger" role="alert">
+      {{ message }} 
+    </div> -->
+    {% endfor %}
+  {% endif %}
+
+  <form action="/cadastro" method="POST">
+    {{ cadastro.csrf_token }}
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome Completo</label>
+      <!-- <input type="text" class="form-control" id="nome" name='nome' placeholder="Seu nome completo"> -->
+      {{ cadastro.nome(type="text", class="form-control", id="nome", placeholder="Seu nome completo") }}
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Endereço de E-mail</label>
+      <!-- <input type="email" class="form-control" id="email" name="email" placeholder="Seu e-mail"> -->
+      {{ cadastro.email(type="email", class="form-control", id="email", placeholder="Seu e-mail")}}
+    </div>
+    <div class="mb-3">
+      <label for="senha" class="form-label">Senha</label>
+      <!-- <input type="password" class="form-control" id="senha" name="senha" placeholder="Escolha uma senha segura"> -->
+      {{ cadastro.senha(type="password", class="form-control", id="senha", placeholder="Escolha uma senha segura")}}
+    </div>
+    <!-- <button type="submit" class="btn btn-primary">Cadastrar</button> -->
+    {{ cadastro.enviar(type="submit", class="btn btn-primary")}}
+  </form>
+
+  <p>Já possui uma conta? <a href="/login">Faça login</a> aqui.</p>
+</section>
+{% endblock %}
