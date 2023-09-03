@@ -1,5 +1,3 @@
-# Projeto Blog
-
 # Faça o clone do Projeto
 
 # Instale o venv
