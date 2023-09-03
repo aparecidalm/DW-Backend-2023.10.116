@@ -15,3 +15,6 @@
 - flask db init
 - flask db migrate -m "Initial migration."
 - flask db upgrade
+
+# Execução do Projeto
+- Flask run
